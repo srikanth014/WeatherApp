@@ -102,8 +102,7 @@ fun WeatherScreen(weatherViewModel: WeatherViewModel) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            // Premium search card with glassmorphism effect
-            PremiumSearchCard(
+            SearchCard(
                 city = city,
                 onCityChange = { city = it },
                 onSearch = {
@@ -150,7 +149,7 @@ fun WeatherScreen(weatherViewModel: WeatherViewModel) {
 }
 
 @Composable
-fun PremiumSearchCard(
+fun SearchCard(
     city: String,
     onCityChange: (String) -> Unit,
     onSearch: () -> Unit
@@ -391,13 +390,12 @@ fun WeatherDetails(data: WeatherModel) {
             .padding(vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Location card with premium design
-        PremiumLocationCard(data)
+        LocationCard(data)
 
         Spacer(modifier = Modifier.height(20.dp))
 
         // Temperature card with gradient background
-        PremiumTemperatureCard(data)
+        TemperatureCard(data)
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -412,7 +410,7 @@ fun WeatherDetails(data: WeatherModel) {
 }
 
 @Composable
-fun PremiumLocationCard(data: WeatherModel) {
+fun LocationCard(data: WeatherModel) {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
@@ -465,7 +463,7 @@ fun PremiumLocationCard(data: WeatherModel) {
 }
 
 @Composable
-fun PremiumTemperatureCard(data: WeatherModel) {
+fun TemperatureCard(data: WeatherModel) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),

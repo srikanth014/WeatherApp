@@ -19,18 +19,14 @@ class WeatherViewModel : ViewModel() {
         _weatherApi.postValue(NetworkResponse.Loading)
         viewModelScope.launch {
             try {
-                val response = weatherApi.getWeather(Constants.apiKey, city)
+                val response = weatherApi.getWeather(Constants.API_KEY, city)
                 if (response.isSuccessful) {
                     val weatherData = response.body()
                     weatherData?.let {
                         _weatherApi.postValue(NetworkResponse.Success(it))
                     }
-                    println("-----yehhhh----- $weatherData")
-                    // Handle the successful response here
                 } else {
                     _weatherApi.postValue(NetworkResponse.Error("Error: ${response.message()}"))
-                    println("-----nooooo----- ${response.errorBody()}")
-                    // Handle the error response here
                 }
             } catch (e: Exception) {
                 _weatherApi.postValue(NetworkResponse.Error("Error: ${e.message}"))
