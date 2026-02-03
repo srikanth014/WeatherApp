@@ -38,7 +38,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -59,7 +59,7 @@ import com.example.weatherapp.api.WeatherModel
 @Composable
 fun WeatherScreen(weatherViewModel: WeatherViewModel) {
     var city by remember { mutableStateOf("") }
-    val weatherResult = weatherViewModel.weatherResult.observeAsState()
+    val weatherResult = weatherViewModel.weatherState.collectAsState()
     val keyboardController = LocalSoftwareKeyboardController.current
 
     Box(
